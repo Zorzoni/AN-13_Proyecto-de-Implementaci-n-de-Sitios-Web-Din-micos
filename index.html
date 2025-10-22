@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreo en Tiempo Real + Marcadores</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Rastreo en Tiempo Real</h1>
+        </header>
+
+        <div class="main-content">
+            <div class="controls-panel">
+                <div class="location-info">
+                    <h3>Ubicación Actual</h3>
+                    <p id="location-coords">Obteniendo ubicación...</p>
+                    <p id="address-info">Cargando dirección...</p>
+                </div>
+
+                <div class="markers-section">
+                    <h3>Gestión de Marcadores</h3>
+                    <div class="marker-controls">
+                        <button id="add-marker" class="btn">Agregar Marcador</button>
+                        <button id="clear-markers" class="btn">Limpiar Marcadores</button>
+                    </div>
+                    <div id="markers-list">
+                        <p class="no-markers">No hay marcadores guardados</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <!-- Modal para editar marcadores -->
+    <div id="marker-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Editar Marcador</h3>
+            <form id="marker-form">
+                <input type="hidden" id="marker-id">
+                <div class="form-group">
+                    <label for="marker-title">Título:</label>
+                    <input type="text" id="marker-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="marker-description">Descripción:</label>
+                    <textarea id="marker-description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="marker-color">Color:</label>
+                    <select id="marker-color">
+                        <option value="#FF5252">Rojo</option>
+                        <option value="#4CAF50">Verde</option>
+                        <option value="#2196F3">Azul</option>
+                        <option value="#FFC107">Amarillo</option>
+                        <option value="#9C27B0">Púrpura</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn">Guardar</button>
+                    <button type="button" id="delete-marker" class="btn btn-danger">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&callback=initMap" async defer></script>
+    <script src="script.js"></script>
+</body>
+</html>
